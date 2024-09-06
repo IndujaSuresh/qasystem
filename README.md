@@ -1,9 +1,8 @@
 #  **Language-Aware PDF Question-Answering System**
 
-
 ### Overview
 
-The script processes PDF files containing question-answer pairs, builds a question-answering (QA) system using these pairs, and interacts with the user to answer queries based on the processed content. It uses libraries like `LangChain`, `HuggingFace`, and `PyMuPDF`.
+This script processes PDF files containing question-answer pairs, builds a question-answering (QA) system using these pairs, and interacts with the user to answer queries based on the processed content. It uses libraries like `LangChain`, `HuggingFace`, and `PyMuPDF`.
 
 ### Code Breakdown
 
@@ -29,7 +28,12 @@ The script processes PDF files containing question-answer pairs, builds a questi
    - **`create_llm_pipeline(model, tokenizer)`:** Creates a pipeline for text generation using a specified model and tokenizer.
    - **`process_pdf_file(filename, pdf_path, embeddings, llm, prompt)`:** Processes a PDF file, extracts question-answer pairs, detects language, creates embeddings, and sets up a QA chain.
 
-3. **Main Function:**
+3. **Models Used:**
+   - **`sarvamai/sarvam-2b-v0.5`:** This model is used for text generation. It's loaded from HuggingFace and is utilized to generate responses based on the input queries. The `AutoTokenizer` and `AutoModelForCausalLM` are used to handle tokenization and model inference, respectively.
+   - **`sentence-transformers/all-MiniLM-L6-v2`:** Used for generating sentence embeddings for English text. This model is efficient and effective for creating dense vector representations of text.
+   - **`KooAI/KooBERT`:** Used for generating embeddings for Malayalam text. This model is specialized for the Malayalam language and helps in understanding and processing Malayalam text effectively.
+
+4. **Main Function:**
    - **Model Loading:** Checks if the model is already saved as a pickle file. If not, it loads the model and tokenizer from the HuggingFace repository and saves them.
    - **LLM Pipeline Creation:** Sets up the text generation pipeline.
    - **PromptTemplate Creation:** Generates a prompt template for querying.
@@ -49,3 +53,4 @@ The script processes PDF files containing question-answer pairs, builds a questi
 - For questions in English, it uses the English QA chain and provides responses in English.
 
 The script sets up a robust QA system based on question-answer pairs in multiple languages, leveraging modern NLP tools and frameworks.
+
