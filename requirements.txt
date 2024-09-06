@@ -1,0 +1,6 @@
+torch
+langchain
+transformers
+pymupdf
+langdetect
+langchain-huggingface
